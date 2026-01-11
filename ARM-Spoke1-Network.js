@@ -89,8 +89,7 @@
                         "createOption": "FromImage",
                         "caching": "ReadWrite",
                         "managedDisk": {
-                            "storageAccountType": "Premium_LRS",
-                            "id": "[resourceId('Microsoft.Compute/disks', concat(parameters('virtualMachines_vm_spoke1_prod_Public_01_name'), '_OsDisk_1_b768b99b9db5471f8e111b0a0ef5cfb4'))]"
+                            "storageAccountType": "Premium_LRS"
                         },
                         "deleteOption": "Delete",
                         "diskSizeGB": 127
@@ -115,8 +114,7 @@
                         }
                     },
                     "secrets": [],
-                    "allowExtensionOperations": true,
-                    "requireGuestProvisionSignal": true
+                    "allowExtensionOperations": true
                 },
                 "networkProfile": {
                     "networkInterfaces": [
@@ -186,68 +184,8 @@
                         "type": "Microsoft.Network/virtualNetworks/subnets"
                     }
                 ],
-                "virtualNetworkPeerings": [
-                    {
-                        "name": "peer-Spoke1-prod-toHub-01",
-                        "id": "[resourceId('Microsoft.Network/virtualNetworks/virtualNetworkPeerings', parameters('virtualNetworks_vnet_Spoke1_prod_network_01_name'), 'peer-Spoke1-prod-toHub-01')]",
-                        "properties": {
-                            "peeringState": "Connected",
-                            "peeringSyncLevel": "FullyInSync",
-                            "remoteVirtualNetwork": {
-                                "id": "[parameters('virtualNetworks_vnet_hub_prod_network_01_externalid')]"
-                            },
-                            "allowVirtualNetworkAccess": true,
-                            "allowForwardedTraffic": false,
-                            "allowGatewayTransit": false,
-                            "useRemoteGateways": false,
-                            "doNotVerifyRemoteGateways": false,
-                            "peerCompleteVnets": true,
-                            "remoteAddressSpace": {
-                                "addressPrefixes": [
-                                    "10.0.0.0/24"
-                                ]
-                            },
-                            "remoteVirtualNetworkAddressSpace": {
-                                "addressPrefixes": [
-                                    "10.0.0.0/24"
-                                ]
-                            }
-                        },
-                        "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
-                    }
-                ],
+                "virtualNetworkPeerings": [],
                 "enableDdosProtection": false
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-            "apiVersion": "2024-07-01",
-            "name": "[concat(parameters('virtualNetworks_vnet_Spoke1_prod_network_01_name'), '/peer-Spoke1-prod-toHub-01')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_Spoke1_prod_network_01_name'))]"
-            ],
-            "properties": {
-                "peeringState": "Connected",
-                "peeringSyncLevel": "FullyInSync",
-                "remoteVirtualNetwork": {
-                    "id": "[parameters('virtualNetworks_vnet_hub_prod_network_01_externalid')]"
-                },
-                "allowVirtualNetworkAccess": true,
-                "allowForwardedTraffic": false,
-                "allowGatewayTransit": false,
-                "useRemoteGateways": false,
-                "doNotVerifyRemoteGateways": false,
-                "peerCompleteVnets": true,
-                "remoteAddressSpace": {
-                    "addressPrefixes": [
-                        "10.0.0.0/24"
-                    ]
-                },
-                "remoteVirtualNetworkAddressSpace": {
-                    "addressPrefixes": [
-                        "10.0.0.0/24"
-                    ]
-                }
             }
         },
         {
