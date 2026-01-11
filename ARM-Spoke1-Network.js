@@ -10,6 +10,8 @@
             "defaultValue": "vm-spoke1-prod-Public-01",
             "type": "String"
         },
+        "adminUsername": { "type": "string" },
+        "adminPassword": { "type": "securestring" },
         "virtualNetworks_vnet_Spoke1_prod_network_01_name": {
             "defaultValue": "vnet-Spoke1-prod-network-01",
             "type": "String"
@@ -98,7 +100,8 @@
                 },
                 "osProfile": {
                     "computerName": "vm-spoke1-prod-",
-                    "adminUsername": "ohashit",
+                    "adminUsername": "[parameters('adminUsername')]",
+                    "adminPassword": "[parameters('adminPassword')]",
                     "windowsConfiguration": {
                         "provisionVMAgent": true,
                         "enableAutomaticUpdates": true,
