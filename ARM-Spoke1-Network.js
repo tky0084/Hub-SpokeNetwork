@@ -23,10 +23,6 @@
         "networkSecurityGroups_vm_spoke1_prod_Public_01_nsg_name": {
             "defaultValue": "vm-spoke1-prod-Public-01-nsg",
             "type": "String"
-        },
-        "virtualNetworks_vnet_hub_prod_network_01_externalid": {
-            "defaultValue": "/subscriptions/68990dcd-fb41-4bb2-aba3-cbfeceab1ab9/resourceGroups/Hub-Network/providers/Microsoft.Network/virtualNetworks/vnet-hub-prod-network-01",
-            "type": "String"
         }
     },
     "variables": {},
