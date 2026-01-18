@@ -88,36 +88,7 @@
                         "type": "Microsoft.Network/virtualNetworks/subnets"
                     }
                 ],
-                "virtualNetworkPeerings": [
-                    {
-                        "name": "peer-hub-prod-toSpoke1-01",
-                        "id": "[resourceId('Microsoft.Network/virtualNetworks/virtualNetworkPeerings', parameters('virtualNetworks_vnet_hub_prod_network_01_name'), 'peer-hub-prod-toSpoke1-01')]",
-                        "properties": {
-                            "peeringState": "Connected",
-                            "peeringSyncLevel": "FullyInSync",
-                            "remoteVirtualNetwork": {
-                                "id": "[parameters('virtualNetworks_vnet_Spoke1_prod_network_01_externalid')]"
-                            },
-                            "allowVirtualNetworkAccess": true,
-                            "allowForwardedTraffic": true,
-                            "allowGatewayTransit": false,
-                            "useRemoteGateways": false,
-                            "doNotVerifyRemoteGateways": false,
-                            "peerCompleteVnets": true,
-                            "remoteAddressSpace": {
-                                "addressPrefixes": [
-                                    "10.0.1.0/24"
-                                ]
-                            },
-                            "remoteVirtualNetworkAddressSpace": {
-                                "addressPrefixes": [
-                                    "10.0.1.0/24"
-                                ]
-                            }
-                        },
-                        "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings"
-                    }
-                ],
+                "virtualNetworkPeerings": [],
                 "enableDdosProtection": false
             }
         },
@@ -182,37 +153,6 @@
                 "delegations": [],
                 "privateEndpointNetworkPolicies": "Disabled",
                 "privateLinkServiceNetworkPolicies": "Enabled"
-            }
-        },
-        {
-            "type": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
-            "apiVersion": "2024-07-01",
-            "name": "[concat(parameters('virtualNetworks_vnet_hub_prod_network_01_name'), '/peer-hub-prod-toSpoke1-01')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworks_vnet_hub_prod_network_01_name'))]"
-            ],
-            "properties": {
-                "peeringState": "Connected",
-                "peeringSyncLevel": "FullyInSync",
-                "remoteVirtualNetwork": {
-                    "id": "[parameters('virtualNetworks_vnet_Spoke1_prod_network_01_externalid')]"
-                },
-                "allowVirtualNetworkAccess": true,
-                "allowForwardedTraffic": true,
-                "allowGatewayTransit": false,
-                "useRemoteGateways": false,
-                "doNotVerifyRemoteGateways": false,
-                "peerCompleteVnets": true,
-                "remoteAddressSpace": {
-                    "addressPrefixes": [
-                        "10.0.1.0/24"
-                    ]
-                },
-                "remoteVirtualNetworkAddressSpace": {
-                    "addressPrefixes": [
-                        "10.0.1.0/24"
-                    ]
-                }
             }
         },
         {
